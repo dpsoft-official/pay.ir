@@ -17,30 +17,30 @@ copy `sample` directory to server. Open `request.php` in browser and bala balah 
 
 ### Request
 ```php
-    try {
-        $pay = new \Dpsoft\Pay\Pay($apiKey);
-        $result = $pay->request($callbackUrl,$amount);
-        //save amount and invoice id to forther use
-        $_SESSION['amount']=$amount;
-        $_SESSION['invoice_id']=$result['invoice_id'];
+try {
+    $pay = new \Dpsoft\Pay\Pay($apiKey);
+    $result = $pay->request($callbackUrl,$amount);
+    //save amount and invoice id to forther use
+    $_SESSION['amount']=$amount;
+    $_SESSION['invoice_id']=$result['invoice_id'];
 
-        $pay->redirectToBank();
-        exit();
-    }catch (Throwable $exception){
-        echo $exception->getMessage();
-    }
+    $pay->redirectToBank();
+    exit();
+}catch (Throwable $exception){
+    echo $exception->getMessage();
+}
 ```
 
 ### Response
 ```php
 try {
-        $pay = new \Dpsoft\Pay\Pay();
-        $result = $pay->verify($_SESSION['amount'],$_SESSION['invoice_id']);
-        //save result. The keys are: card_number,transaction_id and token for example $result['token']
-        echo "Successfull transaction.";
-    }catch (Throwable $exception){
-        echo "Error in transaction: ";
-    }
+    $pay = new \Dpsoft\Pay\Pay();
+    $result = $pay->verify($_SESSION['amount'],$_SESSION['invoice_id']);
+    //save result. The keys are: card_number,transaction_id and token for example $result['token']
+    echo "Successfull transaction.";
+}catch (Throwable $exception){
+    echo "Error in transaction: ";
+}
 ```
 ### Testing
 
