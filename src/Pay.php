@@ -84,7 +84,7 @@ class Pay
             return [
                 'card_number' => $result['cardNumber'],
                 'transaction_id' => $result['transId'],
-                'token'=>$result['token']
+                'token'=>$token
             ];
         }
         throw new \Exception($result['errorMessage']??'Unknown Error!',$result['errorCode']??-1);

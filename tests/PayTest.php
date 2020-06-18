@@ -5,7 +5,7 @@ namespace Dpsoft\Pay\Tests;
 use Dpsoft\Pay\Pay;
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class PayTest extends TestCase
 {
     /**
      * @var \MockTransport
@@ -44,7 +44,6 @@ class ExampleTest extends TestCase
         $amount = 10000;
 
         $exceptedData =[
-            'token'=>$_GET['token'],
             'status'=>1,
             'amount'=>$amount,
             'factorNumber'=>$_GET['invoice_id'],
