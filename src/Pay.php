@@ -70,7 +70,7 @@ class Pay
             ($invoiceId != $_GET['invoice_id']) or
             ($status != 1)
         ) {
-            throw new \Exception('Invalid Response From Gateway!', -1);
+            throw new \Exception($status==0?'تراکنش توسط کاربر لغو شده است.':'Invalid Response From Gateway!', intval($status));
         }
 
         $response = $this->httpRequest(\Requests::POST, '/verify', ['api' => $this->apiKey, 'token' => $token]);
